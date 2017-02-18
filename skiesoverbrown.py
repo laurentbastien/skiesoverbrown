@@ -9,13 +9,14 @@ import re
 import math
 import requests
 
-#my keys
+#Put your keys
 CONSUMER_KEY = ""
 CONSUMER_SECRET = ""
 ACCESS_TOKEN = ""
 ACCESS_TOKEN_SECRET = ""
 
-url = requests.get('https://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=40.807496&lng=-73.963151&fDstL=0&fDstU=50')
+#Aircraft API
+url = requests.get('https://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=40.807496&lng=-73.963151&fDstL=0&fDstU=30')
 pprinter = pprint.PrettyPrinter(indent=4)
 data = url.json()
 
@@ -29,7 +30,7 @@ R = 6373.0
 lat1 = radians(40.807502)
 lon1 = radians(-73.963279)
 
-#Function for distance
+#Function to calculate for distance
 def myfunction(lon1, lat1, lon2, lat2):
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
     dlon = lon2 - lon1 
@@ -39,7 +40,7 @@ def myfunction(lon1, lat1, lon2, lat2):
     km = 6367 * c
     return km
 
-#Markovbot
+#Set up the Markovbot module. 
 tweetbot = MarkovBot()
 # Get the current directory's path
 dirname = os.path.dirname(os.path.abspath('/Users/normandcorbeil/Desktop/computational_journalism/bot/'))
@@ -52,6 +53,7 @@ previous_airplane = ''
 sentences = []
 f = open('WeBook.txt') 
 
+#I picked 5 km, but feel free to play with the distance a bit.
 while True:
     for item in data["acList"]:
         if "FBI" in item.get('Op', "None") or "Police" in item.get('Op', "None") or "DEA" in item.get('Op', "None") or "Homeland" in item.get('Op', "None"):
