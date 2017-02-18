@@ -11,13 +11,13 @@ import re
 import math
 import requests
 
-#my kets
+#my keys
 CONSUMER_KEY = ""
 CONSUMER_SECRET = ""
 ACCESS_TOKEN = ""
 ACCESS_TOKEN_SECRET = ""
 
-url = requests.get('https://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=40.807496&lng=-73.963151&fDstL=0&fDstU=')
+url = requests.get('https://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=40.807496&lng=-73.963151&fDstL=0&fDstU=50')
 pprinter = pprint.PrettyPrinter(indent=4)
 data = url.json()
 
@@ -25,12 +25,13 @@ auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = API(auth)
 
-#Calculate distance. approximate radius of earth in km
+#Calculate distance. 
 R = 6373.0
 40.807502, -73.963279
 lat1 = radians(40.807502)
 lon1 = radians(-73.963279)
 
+#Function for distance
 def myfunction(lon1, lat1, lon2, lat2):
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
     dlon = lon2 - lon1 
@@ -40,7 +41,7 @@ def myfunction(lon1, lat1, lon2, lat2):
     km = 6367 * c
     return km
 
-#Markov
+#Markovbot
 tweetbot = MarkovBot()
 # Get the current directory's path
 dirname = os.path.dirname(os.path.abspath('/Users/normandcorbeil/Desktop/computational_journalism/bot/'))
