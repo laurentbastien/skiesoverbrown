@@ -40,7 +40,7 @@ def myfunction(lon1, lat1, lon2, lat2):
     km = 6367 * c
     return km
 
-#Set up the Markovbot module. 
+#Set up the Markovbot module. "WeBook"is my text file with all the books.
 tweetbot = MarkovBot()
 # Get the current directory's path
 dirname = os.path.dirname(os.path.abspath('/Users/normandcorbeil/Desktop/computational_journalism/bot/'))
