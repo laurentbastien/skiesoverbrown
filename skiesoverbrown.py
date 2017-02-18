@@ -1,5 +1,3 @@
-import sys
-sys.path.append('/usr/lib/python3/dist-packages')
 import pprint
 import os
 from tweepy import OAuthHandler, API
