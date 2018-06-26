@@ -43,9 +43,9 @@ def myfunction(lon1, lat1, lon2, lat2):
 #Set up the Markovbot module. "WeBook"is my text file with all the books.
 tweetbot = MarkovBot()
 # Get the current directory's path
-dirname = os.path.dirname(os.path.abspath('/Users/normandcorbeil/Desktop/computational_journalism/bot/'))
+dirname = os.path.dirname(os.path.abspath('/foo/bot/'))
 # Construct the path to the book
-book = os.path.join(dirname,'/Users/normandcorbeil/Desktop/computational_journalism/bot/Webook.txt')
+book = os.path.join(dirname,'/foo/bot/Webook.txt')
 # Make your bot read the book!
 tweetbot.read(book)
 
